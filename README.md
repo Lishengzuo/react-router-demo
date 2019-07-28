@@ -125,15 +125,31 @@ v4和v5版
 	}
 	export default About;
 
-### 4、 在`App`组件中用`Route`进行路径配置
-在`App.js`文件中引入`Route`和`Link`组件，代码如下
 
-	import { Route, Link } from 'react-router-dom';
-
+### 4、 在入口文件中配置路由信息
 把自定义的两个组件也引进来，代码如下
 
 	import About from './components/about';
 	import Home from './components/home';
+
+然后在Router标签中写入路由的路径配置
+
+	ReactDOM.render(
+		<Router>
+			<Route path="/" exact component={ App } />
+			<Route path="/home" component={ Home } />
+        	<Route path="/about" component={ About } />
+		</Router>, 
+		document.getElementById('root')
+	);
+	
+
+这就是表示路由路径的配置，其中path属性表示路径，conponent表示组件，整段代码的意思就是把自定义的组件和相应的路径进行映射，只要项目中有代码触发了这个路径，就会渲染相对应的组件。其中触发路由跳转的方式的有Link标签，和history.push()这两个方法。
+
+### 5、 在`App`组件中用`Route`进行路径配置
+在`App.js`文件中引入`Route`和`Link`组件，代码如下
+
+	import { Link } from 'react-router-dom';
 
 在`App`中进行组件组装
 
@@ -146,20 +162,11 @@ v4和v5版
                     	<Link to="/home">跳到home</Link><br />
                     	<Link to="/about">跳到about</Link>
                 	</div>
-
-                	<Route path="/home" component={ Home } />
-                	<Route path="/about" component={ About } />
             	</div>
         	);
     	}
 	}
 
-其中
-
-	<Route path="/home" component={ Home } />
-	<Route path="/about" component={ About } />
-
-表示路由路径的配置，其中path属性表示路径，conponent表示组件，整段代码的意思就是把自定义的组件和相应的路径进行映射，只要项目中有代码触发了这个路径，就会渲染相对应的组件。其中触发路由跳转的方式的有Link标签，和history.push()这两个方法。
 
 在这里就是用了Link标签的方式跳转：
 
