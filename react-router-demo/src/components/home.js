@@ -4,7 +4,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				<p>我是一个主页</p>
+				<p>我是一个主页,修改测试</p>
 			</div>
 		);
 	}
